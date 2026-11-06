@@ -9,7 +9,7 @@ st.markdown("etxpense manager")
 st.header("data entry")
 with st.form('entry form', clear_on_submit=True):
   date=st.date_input("date")
-  category=st.selectbox(("category",["food","rent","bills","travel","shopping","entertainment","others"])
+  category=st.selectbox("category",["food","rent","bills","travel","shopping","entertainment","others"])
   amount=st.number_input(("expense amount"),min_value=0.0,step=10.0)
   notes=st.text_input("optional")
   submit=st.form_submit_button("save")
