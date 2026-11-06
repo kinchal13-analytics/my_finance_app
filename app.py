@@ -32,7 +32,7 @@ with st.form('entry form', clear_on_submit=True):
     #chartwise data
     st.subheader("chartwise data(pie chart)")
     cat_df=df.groupby(category)['amount'].sum().reset_index()
-    fig.ax= plt.subplots()
+    fig.ax= plot.subplots()
     ax.pie(cat_df["amount"],lables=cat_df["category"],autopct="%1.2f%%")
     ax.axis=("equal")
     st.pyplot(fig)
