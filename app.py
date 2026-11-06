@@ -23,6 +23,12 @@ with st.form('entry form', clear_on_submit=True):
   st.header(" your expenses")
   df=view_all_expenses()
   if not df.empty:
+    df["DATE"] = pd.to_datetime(df["DATE"])
+
+start_date = st.date_input("Kab se dekhna hai?")
+end_date = st.date_input("Kab tak dekhna hai?")
+
+df = df[(df["DATE"] >= pd.to_datetime(start_date)) & (df["DATE"] <= pd.to_datetime(end_date))]
     total_spend=df["AMOUNT"].sum()
     st.markdown(f"total spend is {total_spend}")
     #datatable
