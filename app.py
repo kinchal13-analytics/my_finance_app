@@ -1,5 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plot
 from db_helper import hello_db,insert_expence,view_all_expences
 #start app to ready database and tables
 hello_db()
@@ -11,7 +10,7 @@ st.header("data entry")
 with st.form('entry form', clear_on_submit=True):
   date=st.date_input("date")
   category=st.selectbox(("category")["food","rent","bills","travel","shopping","entertainment","others"])
-  amount=st.number_input(("expense amount"),min_amount=0.0,step=10.0)
+  amount=st.number_input(("expense amount"),min_value=0.0,step=10.0)
   notes=st.text_input("optional")
   submit=st.form_submit_button("save")
   if submit:
@@ -32,9 +31,6 @@ with st.form('entry form', clear_on_submit=True):
     #chartwise data
     st.subheader("chartwise data(pie chart)")
     cat_df=df.groupby(category)['amount'].sum().reset_index()
-    fig.ax= plot.subplots()
-    ax.pie(cat_df["amount"],lables=cat_df["category"],autopct="%1.2f%%")
-    ax.axis=("equal")
-    st.pyplot(fig)
+    st.bar_chart(cat_df.set_index("category")["amount"])
   else:
     st.into("no expense has been added yet.add your first expense using the form above")
