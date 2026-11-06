@@ -23,7 +23,7 @@ with st.form('entry form', clear_on_submit=True):
   st.header(" your expenses")
   df=view_all_expenses()
   if not df.empty:
-    total_spend=df["amount"].sum()
+    total_spend=df["AMOUNT"].sum()
     st.markdown(f"total spend is {total_spend}")
     #datatable
     st.subheader("list your expenses")
