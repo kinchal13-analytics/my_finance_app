@@ -1,5 +1,5 @@
 import streamlit as st
-from db_helper import hello_db,insert_expence,view_all_expenses
+from db_helper import hello_db,insert_expense,view_all_expenses
 #start app to ready database and tables
 hello_db()
 #app title from web
