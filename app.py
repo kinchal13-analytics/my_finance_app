@@ -27,10 +27,10 @@ with st.form('entry form', clear_on_submit=True):
     st.markdown(f"total spend is {total_spend}")
     #datatable
     st.subheader("list your expenses")
-    st.dataframe(df[["date","category","amount","notes"]])
+    st.dataframe(df[["DATE","CATEGORY","AMOUNT","NOTES"]])
     #chartwise data
     st.subheader("chartwise data(pie chart)")
-    cat_df=df.groupby(category)['amount'].sum().reset_index()
-    st.bar_chart(cat_df.set_index("category")["amount"])
+    cat_df=df.groupby("CATEGORY")['AMOUNT'].sum().reset_index()
+    st.bar_chart(cat_df.set_index("CATEGORY")["AMOUNT"])
   else:
     st.info("no expense has been added yet.add your first expense using the form above")
