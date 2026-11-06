@@ -33,4 +33,4 @@ with st.form('entry form', clear_on_submit=True):
     cat_df=df.groupby(category)['amount'].sum().reset_index()
     st.bar_chart(cat_df.set_index("category")["amount"])
   else:
-    st.into("no expense has been added yet.add your first expense using the form above")
+    st.info("no expense has been added yet.add your first expense using the form above")
